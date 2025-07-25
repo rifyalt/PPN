@@ -10,7 +10,7 @@ credentials = Credentials.from_service_account_info(st.secrets["google"], scopes
 client = gspread.authorize(credentials)
 
 # ID Google Spreadsheet
-sheet_id = "1THcWHs7BtY7mYtnVfy83TZnv3jgVu7hzBrZ_rn5_y_Y/edit?gid=492131202#gid=492131202"
+sheet_id = "1THcWHs7BtY7mYtnVfy83TZnv3jgVu7hzBrZ_rn5_y_Y"
 
 # Coba buka spreadsheet
 try:
@@ -27,8 +27,8 @@ st.info(f"📄 Worksheet tersedia: {worksheet_titles}")
 # Coba ambil worksheet satu per satu
 try:
     voucher_sheet = spreadsheet.worksheet("OPSI 2 - Data Voucher")
-    ticket_sheet = spreadsheet.worksheet("OPSI 2 - Riwayat Klaim Ticketin")
-    hotel_sheet = spreadsheet.worksheet("OPSI 2 - Riwayat Klaim Hotel")
+#    ticket_sheet = spreadsheet.worksheet("OPSI 2 - Riwayat Klaim Ticketin")
+#    hotel_sheet = spreadsheet.worksheet("OPSI 2 - Riwayat Klaim Hotel")
 except Exception as e:
     st.error("❌ Gagal membuka salah satu worksheet. Pastikan nama worksheet sesuai.")
     st.exception(e)
@@ -36,8 +36,8 @@ except Exception as e:
 
 # Convert ke DataFrame
 voucher_df = pd.DataFrame(voucher_sheet.get_all_records())
-ticket_df = pd.DataFrame(ticket_sheet.get_all_records())
-hotel_df = pd.DataFrame(hotel_sheet.get_all_records())
+#ticket_df = pd.DataFrame(ticket_sheet.get_all_records())
+#hotel_df = pd.DataFrame(hotel_sheet.get_all_records())
 
 st.title("🎫 Dashboard Klaim Voucher SVMTT - Patra Niaga")
 
